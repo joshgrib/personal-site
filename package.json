@@ -1,0 +1,12 @@
+{
+  "name": "personal-site",
+  "version": "1.0.0",
+  "description": "A new personal site for small projects and stuff like that",
+  "main": "index.js",
+  "repository": "git@github.com:joshgrib/personal-site.git",
+  "author": "Josh Gribbon",
+  "license": "MIT",
+  "scripts": {
+    "build:prod": "echo TODO"
+  }
+}
