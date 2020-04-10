@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Josh Gribbon</title>
+  <title>
+    <!-- Populated when the page loads -->
+  </title>
 
   <script defer src="/__/firebase/7.13.2/firebase-app.js"></script>
   <script defer src="/__/firebase/init.js"></script>
@@ -51,12 +53,16 @@
   /**
    * Global variables
    */
-  const VERSION = '0.1.0';
+  const META = {
+    version: '0.2.0',
+    title: 'josh.software'
+  }
   /**
    * Alpine models
    */
   function header() {
-    return { title: 'josh.software' }
+    document.title = META.title;
+    return { title: META.title }
   }
   function portfolio() {
     return {
@@ -70,7 +76,7 @@
     }
   }
   function footer() {
-    return { version: `v${VERSION}` }
+    return { version: `v${META.version}` }
   }
   function dropdown() {
     return {
