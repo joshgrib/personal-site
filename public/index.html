@@ -11,9 +11,11 @@
   <link rel="stylesheet" href="./tailwind.min.css">
 </head>
 <body class="flex flex-col min-h-screen">
+  <!-- Site header -->
   <header x-data="header()" class="bg-orange-500 font-mono font-bold text-lg text-center">
     <code x-text="title"></code>
   </header>
+  <!-- Main body content -->
   <main class="flex-grow bg-gray-100">
     <section class="bg-white mt-16 mx-auto w-64 p-8 shadow-md text-center">
       <header class="text-orange-500 text-lg font-bold">
@@ -25,11 +27,20 @@
       <footer x-data="dropdown()">
         <button x-on:click="open">Open</button>
         <div x-show="isOpen()" x-on:click.away="close">
-          Dropdown Body
+          <section x-data="portfolio()">
+            <ul>
+              <template x-for="(project, projectIdx) in projects" :key="projectIdx">
+                <li>
+                  <a x-text="project.title" x-bind:href="project.link"></a>
+                </li>
+              </template>
+            </ul>
+          </section>
         </div>
       </footer>
     </section>
   </main>
+  <!-- Site footer -->
   <footer x-data="footer()" class="px-1 bg-gray-400 font-mono text-sm">
     <code x-text="version"></code>
   </footer>
@@ -46,6 +57,17 @@
    */
   function header() {
     return { title: 'josh.software' }
+  }
+  function portfolio() {
+    return {
+      projects: [{
+        title: 'sitstuff',
+        link: 'http://www.google.com'
+      }, {
+        title: 'mealplan-datavis',
+        link: '#'
+      }]
+    }
   }
   function footer() {
     return { version: `v${VERSION}` }
