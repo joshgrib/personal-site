@@ -7,6 +7,10 @@
   "author": "Josh Gribbon",
   "license": "MIT",
   "scripts": {
-    "build:prod": "echo TODO"
+    "build:prod": "echo TODO",
+    "dev": "http-server ./public"
+  },
+  "devDependencies": {
+    "http-server": "^0.12.1"
   }
 }
