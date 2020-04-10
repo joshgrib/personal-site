@@ -1,42 +1,62 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Josh Gribbon</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Josh Gribbon</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/7.13.2/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <!--
-    <script defer src="/__/firebase/7.13.2/firebase-auth.js"></script>
-    <script defer src="/__/firebase/7.13.2/firebase-database.js"></script>
-    <script defer src="/__/firebase/7.13.2/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/7.13.2/firebase-storage.js"></script>
-    -->
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+  <script defer src="/__/firebase/7.13.2/firebase-app.js"></script>
+  <script defer src="/__/firebase/init.js"></script>
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Coming soon...</h1>
-      <p>(Probably)</p>
-      <code>v0.0.1</code>
-    </div>
-  </body>
+  <link rel="stylesheet" href="./tailwind.min.css">
+</head>
+<body class="flex flex-col min-h-screen">
+  <header x-data="header()" class="bg-orange-500 font-mono font-bold text-lg text-center">
+    <code x-text="title"></code>
+  </header>
+  <main class="flex-grow bg-gray-100">
+    <section class="bg-white mt-16 mx-auto w-64 p-8 shadow-md text-center">
+      <header class="text-orange-500 text-lg font-bold">
+        Welcome
+      </header>
+      <main class="py-4">
+        The plan is to make this personal and portfolio site but I'm still setting it up.
+      </main>
+      <footer x-data="dropdown()">
+        <button x-on:click="open">Open</button>
+        <div x-show="isOpen()" x-on:click.away="close">
+          Dropdown Body
+        </div>
+      </footer>
+    </section>
+  </main>
+  <footer x-data="footer()" class="px-1 bg-gray-400 font-mono text-sm">
+    <code x-text="version"></code>
+  </footer>
+
+</body>
+<script src="./alpine.min.js"></script>
+<script>
+  /**
+   * Global variables
+   */
+  const VERSION = '0.1.0';
+  /**
+   * Alpine models
+   */
+  function header() {
+    return { title: 'josh.software' }
+  }
+  function footer() {
+    return { version: `v${VERSION}` }
+  }
+  function dropdown() {
+    return {
+      show: false,
+      open() { this.show = true },
+      close() { this.show = false },
+      isOpen() { return this.show === true },
+    }
+  }
+</script>
 </html>
