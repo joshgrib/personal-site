@@ -24,7 +24,7 @@
         Welcome
       </header>
       <main class="py-4">
-        The plan is to make this personal and portfolio site but I'm still setting it up.
+        The plan is to make this a personal and portfolio site but I'm still setting it up.
       </main>
       <footer x-data="dropdown()">
         <button x-on:click="open">Open</button>
@@ -67,11 +67,35 @@
   function portfolio() {
     return {
       projects: [{
+        title: 'Github home page',
+        link: 'https://github.com/joshgrib'
+      }, {
+        title: 'Stackoverflow profile',
+        link: 'https://stackoverflow.com/users/6046312/josh-g'
+      }, {
+        title: 'bn-playground',
+        link: 'https://github.com/joshgrib/bn-playground'
+      }, {
         title: 'sitstuff',
-        link: 'http://www.google.com'
+        link: 'https://github.com/joshgrib/sitstuff'
       }, {
         title: 'mealplan-datavis',
-        link: '#'
+        link: 'https://github.com/joshgrib/mealplan-datavis'
+      }, {
+        title: 'browser-ext',
+        link: 'https://github.com/joshgrib/browser-ext'
+      }, {
+        title: 'small-subreddit-finder',
+        link: 'https://github.com/joshgrib/small-subreddit-finder'
+      }, {
+        title: 'web-op-1',
+        link: 'https://web-op-1.web.app/'
+      }, {
+        title: 'v-minesweeper',
+        link: 'https://v-minesweeper.web.app/'
+      }, {
+        title: 'jakes-books',
+        link: 'https://jakes-books-v0.web.app/'
       }]
     }
   }
