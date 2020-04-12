@@ -36,9 +36,7 @@
           x-on:click="open"
           x-text="isOpen() ? 'Close' : 'Open'"
           class="text-orange-500"
-        >
-          Open
-        </button>
+        >Open</button>
         <hr>
         <div 
           x-show="isOpen()"
@@ -79,12 +77,45 @@
 <script src="./alpine.min.js"></script>
 <script>
   /**
-   * Global variables
+   * Global variables and static data
    */
   const META = {
-    version: '0.2.0',
+    version: '0.2.1',
     title: 'josh.software'
   }
+  const PROJECT_LIST = [
+    {
+      title: 'Github home page',
+      link: 'https://github.com/joshgrib'
+    }, {
+      title: 'Stackoverflow profile',
+      link: 'https://stackoverflow.com/users/6046312/josh-g'
+    }, {
+      title: 'bn-playground',
+      link: 'https://github.com/joshgrib/bn-playground'
+    }, {
+      title: 'sitstuff',
+      link: 'https://github.com/joshgrib/sitstuff'
+    }, {
+      title: 'mealplan-datavis',
+      link: 'https://github.com/joshgrib/mealplan-datavis'
+    }, {
+      title: 'browser-ext',
+      link: 'https://github.com/joshgrib/browser-ext'
+    }, {
+      title: 'small-subreddit-finder',
+      link: 'https://github.com/joshgrib/small-subreddit-finder'
+    }, {
+      title: 'web-op-1',
+      link: 'https://web-op-1.web.app/'
+    }, {
+      title: 'v-minesweeper',
+      link: 'https://v-minesweeper.web.app/'
+    }, {
+      title: 'jakes-books',
+      link: 'https://jakes-books-v0.web.app/'
+    }
+  ]
   /**
    * Alpine models
    */
@@ -92,39 +123,7 @@
     return { title: META.title }
   }
   function portfolio() {
-    return {
-      projects: [{
-        title: 'Github home page',
-        link: 'https://github.com/joshgrib'
-      }, {
-        title: 'Stackoverflow profile',
-        link: 'https://stackoverflow.com/users/6046312/josh-g'
-      }, {
-        title: 'bn-playground',
-        link: 'https://github.com/joshgrib/bn-playground'
-      }, {
-        title: 'sitstuff',
-        link: 'https://github.com/joshgrib/sitstuff'
-      }, {
-        title: 'mealplan-datavis',
-        link: 'https://github.com/joshgrib/mealplan-datavis'
-      }, {
-        title: 'browser-ext',
-        link: 'https://github.com/joshgrib/browser-ext'
-      }, {
-        title: 'small-subreddit-finder',
-        link: 'https://github.com/joshgrib/small-subreddit-finder'
-      }, {
-        title: 'web-op-1',
-        link: 'https://web-op-1.web.app/'
-      }, {
-        title: 'v-minesweeper',
-        link: 'https://v-minesweeper.web.app/'
-      }, {
-        title: 'jakes-books',
-        link: 'https://jakes-books-v0.web.app/'
-      }]
-    }
+    return { projects: PROJECT_LIST }
   }
   function footer() {
     return { version: `v${META.version}` }
