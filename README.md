@@ -2,11 +2,14 @@
 
 ![CI](https://github.com/joshgrib/personal-site/workflows/CI/badge.svg)
 
-The repo for a new personal website
+The repo for a new personal website - [josh.software](https://josh.software/)
 
-Current hosted [on firebase](https://josh-software.web.app/), but after some DNS updates this should drive [josh.software](http://josh.software/)
+* Hosted on [Firebase](https://firebase.google.com/)
+* Deployed with [Github Actions](https://github.com/features/actions)
+* Styling with [tailwind](https://tailwindcss.com/)
+* UI with [alpine.js](https://github.com/alpinejs/alpine)
 
-I'm going to make the site itself with [alpine.js](https://github.com/alpinejs/alpine) and [tailwind](https://tailwindcss.com/), but then it might link out to or host some other projects written in different languages. These are both projects I've been interested in for a while but haven't used for anything sizable. Additionally, I've been doing a lot of stuff involving a build step recently so I want to keep this super simple and go with all static files, at least in the beginning.
+I've used Firebase before but the other stuff was all new to me and I've been wanting to use them for a while. I've also been doing a lot of stuff with a build step so I wanted to make this all with static files.
 
 ## TODO:
 
