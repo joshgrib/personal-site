@@ -14,5 +14,13 @@ I've used Firebase before but the other stuff was all new to me and I've been wa
 ## 0.3.0 TODO:
 
 - [x] Set up basic site
+- [x] Add [icons](http://www.zondicons.com/icons.html)
 - [ ] Create some sort of summary/intro thing
 - [ ] Display projects better, ideally with some images and links to demos
+
+---
+
+**Links to check out**
+
+* https://tailwindcss.com/resources/
+* http://www.heropatterns.com/

@@ -64,11 +64,18 @@
   </main>
   <!-- Site footer -->
   <footer x-data="footer()" class="px-1 bg-gray-400 font-mono text-sm">
+    <a href="https://github.com/joshgrib/personal-site" title="Github repo">
+      <img
+        class="inline-block h-4 w-4"
+        src="icons/book-reference.svg"
+        alt="Book icon"
+      >
+    </a>
     <code x-text="version"></code>
   </footer>
 
+  <script src="./alpine.min.js"></script>
 </body>
-<script src="./alpine.min.js"></script>
 <script>
   /**
    * Global variables and static data
