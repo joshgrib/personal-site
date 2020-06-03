@@ -5,11 +5,11 @@
 :root{
 --sans:1em/1.6 system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Droid Sans, Helvetica Neue, Fira Sans, sans-serif;
 --mono:'Courier New', Courier, 'Ubuntu Mono', 'Liberation Mono', monospace;
---c1:#0074d9;
+--c1:darkorange;
 --c2:#eee;
---c3:#fff;
---c4:#000;
---c5:#fff;
+--c3:white;
+--c4:black;
+--c5:white;
 --m1: 8px;
 --rc: 8px;
 }
