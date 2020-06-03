@@ -8,70 +8,68 @@
   <script defer src="/__/firebase/7.13.2/firebase-app.js"></script>
   <script defer src="/__/firebase/init.js"></script>
 
-  <link rel="stylesheet" href="./tailwind.min.css">
+  <!--https://github.com/vladocar/Basic.css-->
+  <link rel="stylesheet" href="./basic.css">
+  <style>
+		main,footer {
+			margin: 0 auto;
+			width: 60%;
+			text-align: left;
+			padding: 0 20px;
+		}
+
+		section>section {
+			color: #fff;
+			background-color: var(--c1);
+			padding: 15px;
+			margin: 10px 8px 10px 8px;
+			text-align: center;
+		}
+
+		@media (max-width: 481px) {
+			main,footer {width: 98%}
+			section,article {flex:none; width:100%; margin-left: 0;}
+		}
+  </style>
 </head>
-<body class="flex flex-col min-h-screen">
-  <!-- Site header -->
-  <header
-    x-data="header()"
-    x-init="document.title = title"
-    class="bg-orange-500 font-mono font-bold text-lg text-center"
-  >
-    <code x-text="title"></code>
-  </header>
-  <!-- Main body content -->
-  <main class="flex-grow bg-gray-100">
-    <section class="bg-white mt-16 mx-auto w-64 p-8 shadow-md text-center">
-      <header class="text-orange-500 text-lg font-bold">
-        Welcome
-      </header>
-      <main class="py-4">
-        <p>
-          The plan is to make this a personal and portfolio site but I'm still
-          setting it up.
-        </p>
-      </main>
-      <footer x-data="dropdown()" class="bg-gray-200">
-        <button
-          x-on:click="openDropdown"
-          x-text="dropdownIsOpen() ? 'Close Links' : 'Open Links'"
-          class="text-orange-500 p-1 w-full"
-        ></button>
-        <hr>
-        <div
-          x-show.transition="dropdownIsOpen()"
-          x-on:click.away="closeDropdown"
-        >
-          <section x-data="portfolio()">
-            <ul>
-              <template
-                x-for="(project, projectIdx) in projects"
-                :key="projectIdx"
-              >
-                <li>
-                  <a
-                    x-text="project.title"
-                    x-bind:href="project.link"
-                    class="text-blue-400 hover:underline mono"
-                  ></a>
-                </li>
-              </template>
-            </ul>
-          </section>
-        </div>
-      </footer>
+<body>
+  <main>
+    <header
+      x-data="header()"
+      x-init="document.title = title"
+    >
+      <h1 x-text="title"></h1>
+    </header>
+    <p>
+      The plan is to make this a personal and portfolio site but I'm still
+      setting it up.
+    </p>
+    <h3>Projects</h3>
+    <section x-data="portfolio()">
+      <template
+        x-for="(project, projectIdx) in projects"
+        :key="projectIdx"
+      >
+        <article>
+          <h4>
+            <a
+            x-text="project.title"
+            x-bind:href="project.link"
+            ></a>
+          </h4>
+          <p>More info to come!</p>
+        </article>
+      </template>
     </section>
   </main>
-  <!-- Site footer -->
-  <footer x-data="footer()" class="px-1 bg-gray-400 font-mono text-sm">
-    <a href="https://github.com/joshgrib/personal-site" title="Github repo">
-      <img
-        class="inline-block h-4 w-4"
-        src="icons/book-reference.svg"
-        alt="Book icon"
-      >
-    </a>
-    <code x-text="version"></code>
+
+  <footer x-data="footer()">
+    <p>
+      <a href="https://github.com/joshgrib/personal-site" title="Github repo">
+        Github repo
+      </a>
+      <code x-text="version"></code>
+    </p>
   </footer>
 
   <script src="./alpine.min.js"></script>
@@ -129,6 +127,7 @@
   function footer() {
     return { version: `v${META.version}` }
   }
+  /*
   function dropdown() {
     return {
       _open: false,
@@ -137,5 +136,6 @@
       dropdownIsOpen() { return this._open === true },
     }
   }
+  */
 </script>
 </html>
