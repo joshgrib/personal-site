@@ -1,113 +1,134 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- Meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0" />
+	<meta name="author" content="Vladimir Carrer">
   <title>Loading...</title>
-
+  <!-- Firebase hosting stuff -->
   <script defer src="/__/firebase/7.13.2/firebase-app.js"></script>
   <script defer src="/__/firebase/init.js"></script>
-
-  <link rel="stylesheet" href="./tailwind.min.css">
+  <!-- Basic CSS styles -->
+  <link rel="stylesheet" href="./basic.css">
+  <!-- Overrides to basic CSS -->
+  <style>
+    :root{
+      --c1:darkorange;
+    }
+    h1 {
+      color: var(--c1);
+    }
+		main,footer {
+			margin: 0 auto;
+			width: 60%;
+			text-align: left;
+			padding: 0 20px;
+		}
+		section>section {
+			color: #fff;
+			background-color: var(--c1);
+			padding: 15px;
+			margin: 10px 8px 10px 8px;
+			text-align: center;
+		}
+		@media (max-width: 481px) {
+			main,footer {width: 98%}
+			section,article {flex:none; width:100%; margin-left: 0;}
+		}
+  </style>
 </head>
-<body class="flex flex-col min-h-screen">
-  <!-- Site header -->
-  <header
-    x-data="header()"
-    x-init="document.title = title"
-    class="bg-orange-500 font-mono font-bold text-lg text-center"
-  >
-    <code x-text="title"></code>
-  </header>
-  <!-- Main body content -->
-  <main class="flex-grow bg-gray-100">
-    <section class="bg-white mt-16 mx-auto w-64 p-8 shadow-md text-center">
-      <header class="text-orange-500 text-lg font-bold">
-        Welcome
-      </header>
-      <main class="py-4">
-        <p>
-          The plan is to make this a personal and portfolio site but I'm still
-          setting it up.
-        </p>
-      </main>
-      <footer x-data="dropdown()" class="bg-gray-200">
-        <button
-          x-on:click="openDropdown"
-          x-text="dropdownIsOpen() ? 'Close Links' : 'Open Links'"
-          class="text-orange-500 p-1 w-full"
-        ></button>
-        <hr>
-        <div 
-          x-show.transition="dropdownIsOpen()"
-          x-on:click.away="closeDropdown"
-        >
-          <section x-data="portfolio()">
-            <ul>
-              <template
-                x-for="(project, projectIdx) in projects"
-                :key="projectIdx"
-              >
-                <li>
-                  <a
-                    x-text="project.title"
-                    x-bind:href="project.link"
-                    class="text-blue-400 hover:underline mono"
-                  ></a>
-                </li>
-              </template>
-            </ul>
-          </section>
-        </div>
-      </footer>
+<body>
+  <main>
+    <header
+      x-data="header()"
+      x-init="document.title = title"
+    >
+      <h1 x-text="title"></h1>
+      <p>
+        The plan is to make this a personal and portfolio site but I'm still
+        setting it up.
+      </p>
+    </header>
+    <h3>Projects</h3>
+    <section x-data="portfolio()">
+      <template
+        x-for="(project, projectIdx) in projects"
+        :key="projectIdx"
+      >
+        <article>
+          <h4>
+            <a
+            x-text="project.title"
+            x-bind:href="project.link"
+            ></a>
+          </h4>
+          <p x-text="project.description"></p>
+        </article>
+      </template>
     </section>
   </main>
-  <!-- Site footer -->
-  <footer x-data="footer()" class="px-1 bg-gray-400 font-mono text-sm">
-    <code x-text="version"></code>
+
+  <footer x-data="footer()">
+    <p>
+      <a href="https://github.com/joshgrib/personal-site" title="Github repo">
+        Github repo
+      </a>
+      <code x-text="version"></code>
+    </p>
   </footer>
 
+  <script src="./alpine.min.js"></script>
 </body>
-<script src="./alpine.min.js"></script>
 <script>
   /**
    * Global variables and static data
    */
   const META = {
-    version: '0.2.3',
+    version: '0.4.0',
     title: 'josh.software'
   }
   const PROJECT_LIST = [
     {
       title: 'Github home page',
-      link: 'https://github.com/joshgrib'
+      link: 'https://github.com/joshgrib',
+      description: 'My account on Github'
     }, {
       title: 'Stackoverflow profile',
-      link: 'https://stackoverflow.com/users/6046312/josh-g'
+      link: 'https://stackoverflow.com/users/6046312/josh-g',
+      description: 'My account on StackOverflow'
     }, {
       title: 'bn-playground',
-      link: 'https://github.com/joshgrib/bn-playground'
+      link: 'https://github.com/joshgrib/bn-playground',
+      description: 'Baynesian Network modeling and simulation site'
     }, {
       title: 'sitstuff',
-      link: 'https://github.com/joshgrib/sitstuff'
+      link: 'https://github.com/joshgrib/sitstuff',
+      description: 'A tool to generate and view course schedules'
     }, {
       title: 'mealplan-datavis',
-      link: 'https://github.com/joshgrib/mealplan-datavis'
+      link: 'https://github.com/joshgrib/mealplan-datavis',
+      description: 'A tool to calculate and visualize the cost of various meal plans'
     }, {
       title: 'browser-ext',
-      link: 'https://github.com/joshgrib/browser-ext'
+      link: 'https://github.com/joshgrib/browser-ext',
+      description: 'A browser extension to run custom scripts for me'
     }, {
       title: 'small-subreddit-finder',
-      link: 'https://github.com/joshgrib/small-subreddit-finder'
+      link: 'https://github.com/joshgrib/small-subreddit-finder',
+      description: 'Small program to find the shortest available subreddits'
     }, {
       title: 'web-op-1',
-      link: 'https://web-op-1.web.app/'
+      link: 'https://web-op-1.web.app/',
+      description: 'Playing around with music using Tone.js'
     }, {
       title: 'v-minesweeper',
-      link: 'https://v-minesweeper.web.app/'
+      link: 'https://v-minesweeper.web.app/',
+      description: 'Small minesweeper clone'
     }, {
       title: 'jakes-books',
-      link: 'https://jakes-books-v0.web.app/'
+      link: 'https://jakes-books-v0.web.app/',
+      description: 'Beginning of a site to help small business calculate and track expenses'
     }
   ]
   /**
@@ -122,6 +143,7 @@
   function footer() {
     return { version: `v${META.version}` }
   }
+  /*
   function dropdown() {
     return {
       _open: false,
@@ -130,5 +152,6 @@
       dropdownIsOpen() { return this._open === true },
     }
   }
+  */
 </script>
 </html>
