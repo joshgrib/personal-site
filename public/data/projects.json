@@ -1,0 +1,65 @@
+[
+  {
+    "title": "Github home page",
+    "links": [
+      ["profile", "https://github.com/joshgrib"]
+    ],
+    "description": "My account on Github"
+  }, {
+    "title": "Stackoverflow profile",
+    "links": [
+      ["profile", "https://stackoverflow.com/users/6046312/josh-g"]
+    ],
+    "description": "My account on StackOverflow"
+  }, {
+    "title": "bn-playground",
+    "link": "https://github.com/joshgrib/bn-playground",
+    "links": [
+      ["repo", "https://github.com/joshgrib/bn-playground"],
+      ["demo", "https://bn-play.web.app"]
+    ],
+    "description": "Baynesian Network modeling and simulation site"
+  }, {
+    "title": "sitstuff",
+    "links": [
+      ["repo", "https://github.com/joshgrib/sitstuff"]
+    ],
+    "description": "A tool to generate and view course schedules"
+  }, {
+    "title": "mealplan-datavis",
+    "links": [
+      ["repo", "https://github.com/joshgrib/mealplan-datavis"]
+    ],
+    "description": "A tool to calculate and visualize the cost of various meal plans"
+  }, {
+    "title": "browser-ext",
+    "links": [
+      ["repo", "https://github.com/joshgrib/browser-ext"]
+    ],
+    "description": "A browser extension to run custom scripts for me"
+  }, {
+    "title": "small-subreddit-finder",
+    "links": [
+      ["repo", "https://github.com/joshgrib/small-subreddit-finder"]
+    ],
+    "description": "Small program to find the shortest available subreddits"
+  }, {
+    "title": "web-op-1",
+    "links": [
+      ["demo", "https://web-op-1.web.app/"]
+    ],
+    "description": "Playing around with music using Tone.js"
+  }, {
+    "title": "v-minesweeper",
+    "links": [
+      ["demo", "https://v-minesweeper.web.app/"]
+    ],
+    "description": "Small minesweeper clone"
+  }, {
+    "title": "jakes-books",
+    "links": [
+      ["demo", "https://jakes-books-v0.web.app/"]
+    ],
+    "description": "Beginning of a site to help small business calculate and track expenses"
+  }
+]

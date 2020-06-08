@@ -1,0 +1,19 @@
+[
+  {
+    "title": "Migrated CI systems",
+    "description": "",
+    "date": "2017-??-??"
+  }, {
+    "title": "Created a new interface to control data tables",
+    "description": "A way to show/hide columns, run bulk actions, and eventually save custom views for tables",
+    "date": "????-??-??"
+  }, {
+    "title": "Upgraded and refactored web server",
+    "description": "Moved from .Net Framework to .Net Core, along with large refactoring of the web server code",
+    "date": "????-??-??"
+  }, {
+    "title": "Introduced and expanded automated tests and CI builds",
+    "description": "",
+    "date": "????-??-??"
+  }
+]

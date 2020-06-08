@@ -35,41 +35,65 @@
 		@media (max-width: 481px) {
 			main,footer {width: 98%}
 			section,article {flex:none; width:100%; margin-left: 0;}
-		}
+    }
+    .spaced-out-column-items {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
   </style>
 </head>
-<body>
+<body
+  x-data="page()"
+  x-init="initPage"
+>
   <main>
-    <header
-      x-data="header()"
-      x-init="document.title = title"
-    >
+    <header>
       <h1 x-text="title"></h1>
       <p>
+        <!--TODO: add a real intro-->
         The plan is to make this a personal and portfolio site but I'm still
         setting it up.
       </p>
+      <ul>
+        <template x-for="section in sections">
+          <li>
+            <a :href="'#' + section.id" x-text="section.title"></a>
+          </li>
+        </template>
+      </ul>
     </header>
-    <h3>Projects</h3>
-    <section x-data="portfolio()">
-      <template
-        x-for="(project, projectIdx) in projects"
-        :key="projectIdx"
-      >
-        <article>
-          <h4>
-            <a
-            x-text="project.title"
-            x-bind:href="project.link"
-            ></a>
-          </h4>
-          <p x-text="project.description"></p>
-        </article>
-      </template>
-    </section>
+    <template x-for="section in sections">
+      <div :id="section.id">
+        <h2 x-text="section.title"></h2>
+        <section>
+          <template x-for="item in section.items">
+            <article class="spaced-out-column-items">
+              <h4>
+                <template x-if="item.links">
+                  <a :href="item.links[0][1]" x-text="item.title"></a>
+                </template>
+                <template x-if="!item.links">
+                  <span x-text="item.title"></span>
+                </template>
+              </h4>
+              <p x-text="item.description"></p>
+              <template x-if="item.links">
+                <template x-for="link of item.links">
+                  <a :href="link[1]" x-text="link[0]"></a>
+                </template>
+              </template>
+              <template x-if="item.date">
+                <i x-text="item.date"></i>
+              </template>
+            </article>
+          </template>
+        </section>
+      </div>
+    </template>
   </main>
 
-  <footer x-data="footer()">
+  <footer>
     <p>
       <a href="https://github.com/joshgrib/personal-site" title="Github repo">
         Github repo
@@ -82,76 +106,43 @@
 </body>
 <script>
   /**
-   * Global variables and static data
+   * Global methods
    */
-  const META = {
-    version: '0.4.0',
-    title: 'josh.software'
+  const fetchJson = async url => {
+    let response = await fetch(url);
+    let data = await response.json();
+    return data;
   }
-  const PROJECT_LIST = [
-    {
-      title: 'Github home page',
-      link: 'https://github.com/joshgrib',
-      description: 'My account on Github'
-    }, {
-      title: 'Stackoverflow profile',
-      link: 'https://stackoverflow.com/users/6046312/josh-g',
-      description: 'My account on StackOverflow'
-    }, {
-      title: 'bn-playground',
-      link: 'https://github.com/joshgrib/bn-playground',
-      description: 'Baynesian Network modeling and simulation site'
-    }, {
-      title: 'sitstuff',
-      link: 'https://github.com/joshgrib/sitstuff',
-      description: 'A tool to generate and view course schedules'
-    }, {
-      title: 'mealplan-datavis',
-      link: 'https://github.com/joshgrib/mealplan-datavis',
-      description: 'A tool to calculate and visualize the cost of various meal plans'
-    }, {
-      title: 'browser-ext',
-      link: 'https://github.com/joshgrib/browser-ext',
-      description: 'A browser extension to run custom scripts for me'
-    }, {
-      title: 'small-subreddit-finder',
-      link: 'https://github.com/joshgrib/small-subreddit-finder',
-      description: 'Small program to find the shortest available subreddits'
-    }, {
-      title: 'web-op-1',
-      link: 'https://web-op-1.web.app/',
-      description: 'Playing around with music using Tone.js'
-    }, {
-      title: 'v-minesweeper',
-      link: 'https://v-minesweeper.web.app/',
-      description: 'Small minesweeper clone'
-    }, {
-      title: 'jakes-books',
-      link: 'https://jakes-books-v0.web.app/',
-      description: 'Beginning of a site to help small business calculate and track expenses'
-    }
-  ]
+
   /**
-   * Alpine models
+   * Alpine model
    */
-  function header() {
-    return { title: META.title }
-  }
-  function portfolio() {
-    return { projects: PROJECT_LIST }
-  }
-  function footer() {
-    return { version: `v${META.version}` }
-  }
-  /*
-  function dropdown() {
+  function page () {
     return {
-      _open: false,
-      openDropdown() { this._open = true },
-      closeDropdown() { this._open = false },
-      dropdownIsOpen() { return this._open === true },
+      title: 'josh.software',
+      version: `v0.4.1`,
+      sections: [
+        {
+          id: 'projects',
+          title: 'Projects & Profiles',
+          items: []
+        }, {
+          id: 'work',
+          title: 'Work Experience',
+          items: []
+        }
+      ],
+      _setItems (sectionId) {
+        return items => {
+          this.sections.filter(s => s.id === sectionId).map(s => s.items = items)
+        }
+      },
+      initPage () {
+        document.title = this.title
+        fetchJson('/data/projects.json').then(this._setItems('projects'))
+        fetchJson('/data/work.json').then(this._setItems('work'))
+      }
     }
   }
-  */
 </script>
 </html>
