@@ -41,6 +41,12 @@
       flex-direction: column;
       justify-content: space-between;
     }
+    #projects .spaced-out-column-items {
+      min-width: 150px;
+    }
+    #work .spaced-out-column-items {
+      min-width: 300px;
+    }
   </style>
 </head>
 <body
@@ -69,6 +75,7 @@
         <section>
           <template x-for="item in section.items">
             <article class="spaced-out-column-items">
+              <!-- Card title -->
               <h4>
                 <template x-if="item.links">
                   <a :href="item.links[0][1]" x-text="item.title"></a>
@@ -77,14 +84,18 @@
                   <span x-text="item.title"></span>
                 </template>
               </h4>
+              <!-- Card body -->
               <p x-text="item.description"></p>
-              <template x-if="item.links">
-                <template x-for="link of item.links">
-                  <a :href="link[1]" x-text="link[0]"></a>
-                </template>
-              </template>
+              <!-- Card footer -->
               <template x-if="item.date">
                 <i x-text="item.date"></i>
+              </template>
+              <template x-if="item.links">
+                <p>
+                  <template x-for="link of item.links">
+                    <a :href="link[1]" x-text="link[0]"></a>
+                  </template>
+                </p>
               </template>
             </article>
           </template>
@@ -125,11 +136,11 @@
         {
           id: 'projects',
           title: 'Projects & Profiles',
-          items: []
+          items: [{ title: 'Loading...' }]
         }, {
           id: 'work',
           title: 'Work Experience',
-          items: []
+          items: [{ title: 'Loading...' }]
         }
       ],
       _setItems (sectionId) {
@@ -137,10 +148,22 @@
           this.sections.filter(s => s.id === sectionId).map(s => s.items = items)
         }
       },
+      _handleError (sectionId) {
+        return e => {
+          const msgItems = [{
+            title: 'Error loading content',
+            description: e.message
+          }]
+          this._setItems(sectionId)(msgItems)
+        }
+      },
       initPage () {
         document.title = this.title
-        fetchJson('/data/projects.json').then(this._setItems('projects'))
-        fetchJson('/data/work.json').then(this._setItems('work'))
+        const loadSection = id => fetchJson(`/data/${id}.json`)
+          .then(this._setItems(id))
+          .catch(this._handleError(id))
+        loadSection('projects')
+        loadSection('work')
       }
     }
   }
