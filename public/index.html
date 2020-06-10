@@ -71,7 +71,9 @@
     </header>
     <template x-for="section in sections">
       <div :id="section.id">
-        <h2 x-text="section.title"></h2>
+        <a :href="'#' + section.id">
+          <h2 x-text="section.title"></h2>
+        </a>
         <section>
           <template x-for="item in section.items">
             <article class="spaced-out-column-items">
@@ -123,6 +125,17 @@
     return data;
   }
 
+  const TEST_ITEM = {
+    title: 'Full test item',
+    description: 'An item with all properties in order to test, and a fairly lengthy description and list of links in order to test the sizing limits for stuff, hopefully this is sufficient verbosity to accomplish these stated goals',
+    date: '2020-06-09',
+    links: [
+      ['Test', '#foo'],
+      ['Link', '#bar'],
+      ['Items', '#baz']
+    ]
+  }
+
   /**
    * Alpine model
    */
@@ -143,6 +156,7 @@
       ],
       _setItems (sectionId) {
         return items => {
+          items = [TEST_ITEM, TEST_ITEM, TEST_ITEM, TEST_ITEM, ...items]
           this.sections.filter(s => s.id === sectionId).map(s => s.items = items)
         }
       },

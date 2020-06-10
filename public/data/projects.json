@@ -38,6 +38,12 @@
     ],
     "description": "A browser extension to run custom scripts for me"
   }, {
+    "title": "vercel-ntlm",
+    "links": [
+      ["repo", "https://github.com/joshgrib/vercel-ntlm"]
+    ],
+    "description": "An NTLM \"middleware\" for use in a Vercel serverless function to handle Active Directory authentication"
+  }, {
     "title": "small-subreddit-finder",
     "links": [
       ["repo", "https://github.com/joshgrib/small-subreddit-finder"]
