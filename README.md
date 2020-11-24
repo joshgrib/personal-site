@@ -17,6 +17,7 @@ I've used Firebase before but the other stuff was all new to me and I've been wa
 - [x] Add [icons](http://www.zondicons.com/icons.html)
 - [ ] Create some sort of summary/intro thing
 - [ ] Display projects better, ideally with some images and links to demos
+* [ ] Maybe try [mvp.css](https://github.com/andybrewer/mvp/)?
 
 ---
 
@@ -24,3 +25,4 @@ I've used Firebase before but the other stuff was all new to me and I've been wa
 
 * https://tailwindcss.com/resources/
 * http://www.heropatterns.com/
+* https://github.com/andybrewer/mvp/
